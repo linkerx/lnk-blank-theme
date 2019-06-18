@@ -37,3 +37,36 @@ function lnk_attachment_album()
     register_taxonomy('album','attachment',$args_album);
 }
 add_action( 'init', 'lnk_attachment_album');
+
+/**
+ * Agrega sidebars para widgets 
+ */
+register_sidebar( array(
+	'name' => __( 'Inicio Buscar' ),
+	'id' => 'buscar-sidebar',
+	'description' => __( 'Inicio Buscar' ),
+	'before_widget' => "<div class='widget buscar-widget'>",
+	'after_widget' => "</div>",
+	'before_title' => "<h2>",
+	'after_title' => "</h2>"
+));
+
+register_sidebar( array(
+	'name' => __( 'Cartelera' ),
+	'id' => 'cartelera-sidebar',
+	'description' => __( 'Cartelera' ),
+	'before_widget' => "<div class='widget cartelera-widget'>",
+	'after_widget' => "</div>",
+	'before_title' => "<h2>",
+	'after_title' => "</h2>"
+));
+
+register_sidebar( array(
+	'name' => __( 'Enlaces' ),
+	'id' => 'enlaces-sidebar',
+	'description' => __( 'Enlaces' ),
+	'before_widget' => "<div class='widget enlaces-widget'>",
+	'after_widget' => "</div>",
+	'before_title' => "<h2>",
+	'after_title' => "</h2>"
+));
