@@ -11,7 +11,7 @@ add_theme_support( 'post-thumbnails' );
  * (Necesario para poder crear menús)
  */
 function lnk_register_main_menu() {
-    register_nav_menu('main-menu-location','Main Menu Location');
+    register_nav_menu('site-menu-location','Site Menu Location');
 }
 add_action( 'init', 'lnk_register_main_menu' );
 
