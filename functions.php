@@ -70,3 +70,47 @@ register_sidebar( array(
 	'before_title' => "<h2>",
 	'after_title' => "</h2>"
 ));
+
+/**
+ * Agrego menues de menus y widgets a editor
+ */
+function hide_menu() {
+    if (!current_user_can('administrator')) {
+        remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
+        remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
+        remove_submenu_page( 'themes.php', 'customize.php?return=%2Fwp-admin%2Ftools.php' ); // hide the customizer submenu
+        remove_submenu_page( 'themes.php', 'customize.php?return=%2Fwp-admin%2Ftools.php&#038;autofocus%5Bcontrol%5D=background_image' ); // hide the background submenu
+    }
+}
+
+add_action('admin_head', 'hide_menu');
+
+
+/**
+ * Elimino soporte de comentarios
+ */
+
+add_action( 'admin_menu', 'my_remove_admin_menus' );
+function my_remove_admin_menus() {
+    remove_menu_page( 'edit-comments.php' );
+}
+add_action('init', 'remove_comment_support', 100);
+function remove_comment_support() {
+    remove_post_type_support( 'post', 'comments' );
+    remove_post_type_support( 'page', 'comments' );
+}
+function mytheme_admin_bar_render() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+}
+add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
+
+/**
+ * Elimino menú de herramientas
+ */
+add_action( 'admin_menu', 'lnk_remove_menu_herramientas' );
+function lnk_remove_menu_herramientas() {
+	if (!current_user_can('administrator')) {
+		remove_menu_page( 'edit-comments.php' );
+	}
+}
