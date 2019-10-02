@@ -77,7 +77,7 @@ register_sidebar( array(
 function hide_menu() {
     if (!current_user_can('administrator')) {
         remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
-        remove_submenu_page( 'themes.php', 'customize.php ); // hide the customizer submenu
+        remove_submenu_page( 'themes.php', 'customize.php' ); // hide the customizer submenu
    }
 }
 
