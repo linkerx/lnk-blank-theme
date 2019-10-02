@@ -109,6 +109,6 @@ add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
 add_action( 'admin_menu', 'lnk_remove_menu_herramientas' );
 function lnk_remove_menu_herramientas() {
 	if (!current_user_can('administrator')) {
-		remove_menu_page( 'edit-comments.php' );
+		remove_menu_page( 'tools.php' );
 	}
 }
