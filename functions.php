@@ -112,3 +112,13 @@ function lnk_remove_menu_herramientas() {
 		remove_menu_page( 'tools.php' );
 	}
 }
+
+/**
+ * Para multisite muestro los sitios del usuario alfabeticamente
+ */
+add_filter('get_blogs_of_user','sort_my_sites');
+function sort_my_sites($blogs) {
+        $f = create_function('$a,$b','return strcasecmp($a->blogname,$b->blogname);');
+        uasort($blogs, $f);
+        return $blogs;
+}
